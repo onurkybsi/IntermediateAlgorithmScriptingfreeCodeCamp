@@ -1,24 +1,12 @@
 
-function translatePigLatin(str) {
+function myReplace(str, before, after) {
   
-    if(['a', 'e', 'i', 'o', 'u'].indexOf(str[0]) !== -1)
+    if(/^[A-Z]/.test(before))
     {
-      return str.concat("way");
+      after = after[0].toUpperCase() + after.substr(1);
     }
-    else if(str.match(/[aeiou]/gi) == null)
-    {
-      return str.concat("ay");
-    }
-    else
-    {
-      while(['a', 'e', 'i', 'o', 'u'].indexOf(str[0]) === -1)
-      {
-        var firstCharacter = str[0];
-        str = str.substring(1).concat(firstCharacter);
-      }
-  
-      return str.concat("ay");
-    }
+    
+    return str.replace(before,after);
   }
   
-  translatePigLatin("california");
+  myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
